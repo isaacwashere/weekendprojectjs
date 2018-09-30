@@ -22,7 +22,7 @@ do {
     rl.keyInPause("\n***");
     let initChoice = beginGame();
     
-        //for userss who choose Static 
+        //for users who choose Static 
         if (playerChoice == "a" && initChoice == 'attend') 
         {
             console.log("Static stayed in school")
@@ -115,7 +115,7 @@ do {
 
                 }
 
-                //console.clear[]
+                
             }
             else 
             {
@@ -266,7 +266,7 @@ console.log("\n************\nThanks for Playing! Shock ya later!");
     } 
 
 
-//asls the user which player they want to play as, returns a for Virgil or b for Richie
+//asks the user which player they want to play as, returns a for Virgil or b for Richie
     function pickPlayer() 
     {
         let choice = rl.question("\n\nChoose your player (A) Virgil or (B) for Richard: ");
