@@ -4,17 +4,12 @@ let rl = require('readline-sync');
 
 do {     
     console.log("\n\nWelcome to DC Comic's Totally and Completely Official Static Shock Console Game!\n\n********************************************************************************\n");
-
     console.log("In This game you will choose a character, Virgil \"Static Shock\" or Richard \'Gear\" and simulate through a day in their adventurous life. So First read about each and then decide who to be! Enjoy!\n");
-   
     rl.keyInPause("\n***");
-  
     console.log("a - Virgil \"Static Shock\" Hawkins a high school student in Dakota City. As a result of accidental exposure to an experimental mutagen in an event known as the Big Bang, he gained the ability to control and manipulate electromagnetism, and uses these powers to become a superhero named \"Static.\" Countless others who were also exposed also gained a wide variety of mutations and abilities, and Static spends much of his time dealing with these \"Bang Babies\", many of whom use their abilities in selfish, harmful, and even criminal ways.")
-
     rl.keyInPause("\n***");
-
     console.log("\nb - Richard \"Gear\" Foley Virgil's best friend and confidant. At first, he merely provides support for his friend, making gadgets for him and helping to cover for Virgil to protect his secret identity. Richie's passive exposure to the Bang Gas gave him enhanced intelligence, which enabled him to easily invent rocket-powered boots and \"Backpack\", a highly intelligent multipurpose device worn on the back capable of surveillance and other semi-independent activity. With this equipment, he adopted the superhero identity \"Gear\" and becomes Static's full-time partner in crime-fighting.");
-       
+    
     let playerChoice = pickPlayer();
     rl.keyInPause("\n***");
     let initChoice = beginGame();
@@ -22,11 +17,9 @@ do {
     var continuePlayingGame = wantToContinueQ();
 
 }
-
 while (continuePlayingGame)
 
 console.log("\n************\nThanks for Playing! Shock ya later!");
-
 
 //asks if user wants to replay/continue the game, returns true to continue and false to quit
     function wantToContinueQ() 
@@ -81,8 +74,6 @@ console.log("\n************\nThanks for Playing! Shock ya later!");
 
     function theGameItself(playerChoice, initChoice) 
     {
-        
-    
         //for users who choose Static 
         if (playerChoice == "a" && initChoice == 'attend') 
         {
@@ -114,7 +105,7 @@ console.log("\n************\nThanks for Playing! Shock ya later!");
         }
         else if(playerChoice == "a" && initChoice == 'skip')
         {
-            console.log("Static skipped");
+            
             let aSLevelOne = rl.question("\nYou're free, walking along in the local mall, backpack on eating frozen yogurt. The mall is relatively packed for a Monday but you don't care. You've purchased a few things and you are feeling good. Then, you are stopped by a mall cop who asks what are you doing?\nDO YOU:\n(A) Politely ask why you are being questioned\n(B) Answer and promptly leave\n\t");
             if (aSLevelOne == "a") {
                 let aSLevelTwo = rl.question("\nThe cop looks you up and down and says, stay safe and informs you that you may continue shopping. You begin to walk away, heading to the Video game store. You arrive.\nDO YOU:\n(A) Buy a video game\n(B) Play on the sample console\n(C) Leave the mall\n\t");
@@ -200,7 +191,7 @@ console.log("\n************\nThanks for Playing! Shock ya later!");
         }
         else if(playerChoice == "b" && initChoice == 'skip')
         {
-            console.log("Gear skipped");
+            
             let bSLevelOne = rl.question("\nYou are walking along, Virgil has decided not to come along this time, but you are okay, (you all can ditch together another day). You are walking along the sidewalk, backpack on, listening to music and an advertisement catches your eye. You brush it aside. Then another advertisement, different and yet familiar catches your eye. It hits you, that's not an advertisement, that's a person who's been following you.\nDo You\n(A) Turn around and investigate\n(B) Run\n\t")
             if (bSLevelOne == "a") 
             {
@@ -299,3 +290,4 @@ console.log("\n************\nThanks for Playing! Shock ya later!");
 
         }
     }
+
