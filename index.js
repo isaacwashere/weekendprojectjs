@@ -2,13 +2,10 @@ let rl = require('readline-sync');
 //req one of the dependencies that you have already installed 
 //extractig the content of realine- sync and sotring it into the variable
 
-
-do {
-        
+do {     
     console.log("\n\nWelcome to DC Comic's Totally and Completely Official Static Shock Console Game!\n\n********************************************************************************\n");
 
     console.log("In This game you will choose a character, Virgil \"Static Shock\" or Richard \'Gear\" and simulate through a day in their adventurous life. So First read about each and then decide who to be! Enjoy!\n");
-
    
     rl.keyInPause("\n***");
   
@@ -21,12 +18,76 @@ do {
     let playerChoice = pickPlayer();
     rl.keyInPause("\n***");
     let initChoice = beginGame();
+    theGameItself(playerChoice, initChoice);
+    var continuePlayingGame = wantToContinueQ();
+
+}
+
+while (continuePlayingGame)
+
+console.log("\n************\nThanks for Playing! Shock ya later!");
+
+
+//asks if user wants to replay/continue the game, returns true to continue and false to quit
+    function wantToContinueQ() 
+    {
+        let continuePlayingSS = rl.question("Would you like to play again? Y/N: ");  
+            if(continuePlayingSS.toLowerCase() === 'y')  
+            {
+                return true;
+            }
+            else if(continuePlayingSS.toLowerCase() === 'n')
+            {
+                return false;
+            }        
+            else 
+                console.log("**Invalid Input** TRY AGAIN")
+                wantToContinueQ();
+    } 
+
+
+//asks the user which player they want to play as, returns a for Virgil or b for Richie
+    function pickPlayer() 
+    {
+        let choice = rl.question("\n\nChoose your player (A) Virgil or (B) for Richard: ");
+        if (choice.toLowerCase() === 'a') {
+            console.log("\n**You chose Static**\n");
+            return "a"
+        }
+        else if (choice.toLowerCase() === 'b') {
+            console.log("\n~~You chose Gear~~\n");
+            return "b";
+        }
+        else
+            console.log("**ERROR INVALID INPUT - TRY AGAIN**");
+            pickPlayer();
+        
+    }
+
+
+//asks the first question to the user to start the game, returns string attend or string skip
+    function beginGame() {
+        let playerChoice = rl.question("It's early 8am on Monday morning and you have just been dropped off at school. You have a test in one class and a quiz in another class but today is lab day for your Javascript lecture in your Computer class. Would you like to attend class or skip?\n\t");
+        
+            if (playerChoice.toLowerCase() == 'attend')
+            {
+                return 'attend';
+            }
+            else    
+                return 'skip';
+
+    }
+
+
+    function theGameItself(playerChoice, initChoice) 
+    {
+        
     
         //for users who choose Static 
         if (playerChoice == "a" && initChoice == 'attend') 
         {
             console.log("Static stayed in school")
-            let aALevelOne = rl.question("\nIt is a warm day. ou are paying attention, unlike most of the class. Your buddy Richie is taking notes, Joey is texting, Susan and Vickie are whispering about...**BOOM** Joey's phone erupts into white hot flames. You recognize that although you've heard the new phones have a propensity for catching on fire, this fire is different, then it hits you. IT'S Hotstreak, you have to act fast!\nQuick, DO YOU:\n(A) Run out of class gear up and come back to fight\n(B) Stay in class, you don't want the smoke\n\t");  
+            let aALevelOne = rl.question("\nIt is a warm day. You are paying attention, unlike most of the class. Your buddy Richie is taking notes, Joey is texting, Susan and Vickie are whispering about...**BOOM** Joey's phone erupts into white hot flames. You recognize that although you've heard that the new phones have a propensity for catching on fire, this fire is different, then it hits you. IT'S Hotstreak, you have to act fast!\nQuick, DO YOU:\n(A) Run out of class gear up and come back to fight\n(B) Stay in class, you don't want the smoke\n\t");  
                 if(aALevelOne == "a")
                 {
                     console.log("You fight Hotstreak, barely leave with your life, but the school is safe...then you are sent to detention for ditching class\n");
@@ -237,65 +298,4 @@ do {
             }
 
         }
-        
-        else 
-            var continuePlayingGame = wantToContinueQ();
-
-}
-
-while (continuePlayingGame)
-
-console.log("\n************\nThanks for Playing! Shock ya later!");
-
-
-//asks if user wants to replay/continue the game, returns true to continue and false to quit
-    function wantToContinueQ() 
-    {
-        let continuePlayingSS = rl.question("Would you like to play again? Y/N: ");  
-            if(continuePlayingSS.toLowerCase() === 'y')  
-            {
-                return true;
-            }
-            else if(continuePlayingSS.toLowerCase() === 'n')
-            {
-                return false;
-            }        
-            else 
-                console.log("**Invalid Input** TRY AGAIN")
-                wantToContinueQ();
-    } 
-
-
-//asks the user which player they want to play as, returns a for Virgil or b for Richie
-    function pickPlayer() 
-    {
-        let choice = rl.question("\n\nChoose your player (A) Virgil or (B) for Richard: ");
-        if (choice.toLowerCase() === 'a') {
-            console.log("\n**You chose Static**\n");
-            return "a"
-        }
-        else if (choice.toLowerCase() === 'b') {
-            console.log("\n~~You chose Gear~~\n");
-            return "b";
-        }
-        else
-            console.log("**ERROR INVALID INPUT - TRY AGAIN**");
-            pickPlayer();
-        
     }
-
-
-//asks the first question to the user to start the game, returns string attend or string skip
-    function beginGame() {
-        let playerChoice = rl.question("It's early 8am on Monday morning and you have just been dropped off at school. You have a test in one class and a quiz in another class but today is lab day for your Javascript lecture in your Computer class. Would you like to attend class or skip?\n\t");
-        
-            if (playerChoice.toLowerCase() == 'attend')
-            {
-                return 'attend';
-            }
-            else    
-                return 'skip';
-
-    }
-
-
