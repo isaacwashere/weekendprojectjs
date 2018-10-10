@@ -1,6 +1,5 @@
 let rl = require('readline-sync');
-//req one of the dependencies that you have already installed 
-//extractig the content of realine- sync and sotring it into the variable
+//extractig the content of realine- sync and string it into the variable
 
 let pts = 0;
 let currentLevel = 0; 
@@ -85,7 +84,6 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
         //for users who choose Static 
         if (playerChoice == "a" && initChoice == 'attend') 
         {
-            
             let aALevelOne = rl.question("\nIt is a warm day. You are paying attention, unlike most of the class. Your buddy Richie is taking notes, Joey is texting, Susan and Vickie are whispering about...**BOOM** Joey's phone erupts into white hot flames. You recognize that although you've heard that the new phones have a propensity for catching on fire, this fire is different, then it hits you. IT'S Hotstreak, you have to act fast!\nQuick, DO YOU:\n(A) Run out of class gear up and come back to fight\n(B) Stay in class, you don't want the smoke\n\t", {limit: ['a','b']});  
             if(aALevelOne == "a")
                 {
@@ -109,14 +107,12 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                             console.log("\nYou fight him, save the school and are then placed in detention for leaving campus without permission and then grounded for attempting to leave school\n")
                         }
                         else {
-                            //leave school
                             currentLevel++
                             cow(3);
                             console.log("\nHotstreak burns the school down and the children are all forced to attend the much more dangerous school accross town\n");
                         }
                     }
                     else {
-                        //leave teacher to do it
                         currentLevel++;
                         cow(2);
                         console.log("\nThe teacher takes too long, and although the sprinklers come on, the fire, being an offshoot of Hotstreak, burns the school\n")
@@ -172,7 +168,6 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                     console.log("\nYou fight the monster, win and the city is saved, you are a hero. You get back home and are promptly grounded for missing class.\n");
                 }
                 else
-                //you hit b
                     currentLevel++;
                     cow(2);
                     console.log("\nYou are running and running, the monster destroys the city and you are dead GAME OVER\n");
@@ -180,10 +175,8 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
 
         }
 
-        //for users who choose Gear
         else if(playerChoice == "b" && initChoice == 'attend')
         {
-            console.log("Gear stayed in school"); 
             
             let bALevelOne = rl.question("\nYou are sitting in half taking notes, half doodling about the problematics of time travel, Virgil, your best friend is sitting by you paying attention, Bey and Grace are chatting about the upcoming Chemistry homework and in typical fashion there is an empty seat in front of you were Monet \"No Sho Mo\" Simpson usually isn't. All of a sudden, Mitch, the rich kid who always has the best tech, laptop malfunctions. No one hears or notices it but you. His screen goes all black, then all blue...then all red. It hits you, his computer has been compromised by the Brainiac virus and if you don't act fast it'll infect everyone else's electronics.\nDO YOU:\n(A) Tell him you know what's wrong and offer to fix it\n(B) Tell him to take it to the School IT Office\n\t", {limit: ['a','b']});
             if (bALevelOne == "a")
@@ -327,7 +320,7 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                             }
                             else 
                             {
-                                //choosing to ignore him and continue fighting the gang
+                               
                                 currentLevel++;
                                 
                                 cow(4);
@@ -338,7 +331,7 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                     else 
                     {
 
-                        //choosing to run
+                        /
                         currentLevel++;
                         cow(3);
                        
@@ -362,7 +355,6 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                
                 else 
                 {
-                    //this is when you do not believe Permafrost 
                     currentLevel++;
                     cow(2);
                     
@@ -375,7 +367,7 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                         console.log("\nShe unfreezes your feet, you use the re-warmers you built into your socks as she explains her predicament. The villian, ink has trapped her brother. You inform Static and you all leave to go and fight ink\n")
                     }
                     else {
-                        //for alerting Static 
+                       
                         currentLevel++;
                         cow(3);
                         
@@ -386,7 +378,6 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
 
             else 
             {
-                //run, and find out the person is permafrost
                 currentLevel++
                 cow(1);
                 
