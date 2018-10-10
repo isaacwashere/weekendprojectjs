@@ -25,6 +25,7 @@ do {
     var continuePlayingGame = wantToContinueQ();
 
 }
+
 while (continuePlayingGame)
 
 console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******************\n");
@@ -33,19 +34,16 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
     function wantToContinueQ() 
     {   
         
-       
-        let continuePlayingSS = rl.question("Would you like to play again? Y/N: ");  
+        let continuePlayingSS = rl.question("Would you like to play again? Y/N: ", {limit: ['y','n']});  
             if(continuePlayingSS.toLowerCase() === 'y')  
             {
                 return true;
             }
-            else if(continuePlayingSS.toLowerCase() === 'n')
+            else 
             {
                 return false;
             }        
-            else 
-                console.log("**Invalid Input** TRY AGAIN")
-                wantToContinueQ();
+  
     } 
 
 
@@ -70,7 +68,8 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
 
 //asks the first question to the user to start the game, returns string attend or string skip
     function beginGame() {
-        let playerChoice = rl.question("It's early 8am on Monday morning and you have just been dropped off at school. You have a test in one class and a quiz in another class but today is lab day for your Javascript lecture in your Computer class. Would you like to attend class or skip?\n\t");
+        
+        let playerChoice = rl.question("It's early 8am on Monday morning and you have just been dropped off at school. You have a test in one class and a quiz in another class but today is lab day for your Javascript lecture in your Computer class. Would you like to attend class or skip?\n\t", {limit: ['attend','skip']});
         
             if (playerChoice.toLowerCase() == 'attend')
             {
@@ -81,28 +80,29 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
 
     }
 
-
     function theGameItself(playerChoice, initChoice) 
     {
         //for users who choose Static 
         if (playerChoice == "a" && initChoice == 'attend') 
         {
-            let aALevelOne = rl.question("\nIt is a warm day. You are paying attention, unlike most of the class. Your buddy Richie is taking notes, Joey is texting, Susan and Vickie are whispering about...**BOOM** Joey's phone erupts into white hot flames. You recognize that although you've heard that the new phones have a propensity for catching on fire, this fire is different, then it hits you. IT'S Hotstreak, you have to act fast!\nQuick, DO YOU:\n(A) Run out of class gear up and come back to fight\n(B) Stay in class, you don't want the smoke\n\t");  
-                if(aALevelOne == "a")
+            
+            let aALevelOne = rl.question("\nIt is a warm day. You are paying attention, unlike most of the class. Your buddy Richie is taking notes, Joey is texting, Susan and Vickie are whispering about...**BOOM** Joey's phone erupts into white hot flames. You recognize that although you've heard that the new phones have a propensity for catching on fire, this fire is different, then it hits you. IT'S Hotstreak, you have to act fast!\nQuick, DO YOU:\n(A) Run out of class gear up and come back to fight\n(B) Stay in class, you don't want the smoke\n\t", {limit: ['a','b']});  
+            if(aALevelOne == "a")
                 {
                     currentLevel++;
                     heroic(1);
                     console.log("You fight Hotstreak, barely leave with your life, but the school is safe...then you are sent to detention for ditching class\n");
-
                 }
-                else{
+                else if(aALevelOne == "b"){
                     cow(1);
-                    var aALevelTwo = rl.question("\nThe teacher, mistakenly thinking that the loud bang was another student falling out of their chair, slowly turns around. He realizes that the noise was from a fire and rushes to get the fire extinguisher in the back corner. He is having trouble, you aren't the biggest guy in the room but you can slyly use a quick jolt of electricity to magnetize the door and open the fire extinguisher.\nDO YOU:\n(A) Get up and help\n(B) Leave the teacher to do it himself\n\t");
+                    
+                    var aALevelTwo = rl.question("\nThe teacher, mistakenly thinking that the loud bang was another student falling out of their chair, slowly turns around. He realizes that the noise was from a fire and rushes to get the fire extinguisher in the back corner. He is having trouble, you aren't the biggest guy in the room but you can slyly use a quick jolt of electricity to magnetize the door and open the fire extinguisher.\nDO YOU:\n(A) Get up and help\n(B) Leave the teacher to do it himself\n\t", {limit: ['a','b']});
                     if (aALevelTwo == "a")
                     {
                         currentLevel++;
                         heroic(2);
-                        let aALevelThree = rl.question("\nYou are able to get the fire extinguisher open, but it is not strong enough. The room is saved but Hotstreak is now on the campus.\nDo You:\n(A) Run into a locker room, gear up and fight him\n(B) Leave School\n\t")
+                
+                        let aALevelThree = rl.question("\nYou are able to get the fire extinguisher open, but it is not strong enough. The room is saved but Hotstreak is now on the campus.\nDo You:\n(A) Run into a locker room, gear up and fight him\n(B) Leave School\n\t", {limit: ['a','b']})
                         if(aALevelThree == "a") {
                             heroic(3);
                             currentLevel++
@@ -122,20 +122,23 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                         console.log("\nThe teacher takes too long, and although the sprinklers come on, the fire, being an offshoot of Hotstreak, burns the school\n")
                     }
                 }
+
         }
         else if(playerChoice == "a" && initChoice == 'skip')
         {
             
-            let aSLevelOne = rl.question("\nYou're free, walking along in the local mall, backpack on eating frozen yogurt. The mall is relatively packed for a Monday but you don't care. You've purchased a few things and you are feeling good. Then, you are stopped by a mall cop who asks what are you doing?\nDO YOU:\n(A) Politely ask why you are being questioned\n(B) Answer and promptly leave\n\t");
+            let aSLevelOne = rl.question("\nYou're free, walking along in the local mall, backpack on eating frozen yogurt. The mall is relatively packed for a Monday but you don't care. You've purchased a few things and you are feeling good. Then, you are stopped by a mall cop who asks what are you doing?\nDO YOU:\n(A) Politely ask why you are being questioned\n(B) Answer and promptly leave\n\t", {limit: ['a','b']});
             if (aSLevelOne == "a") {
                 currentLevel++;
                 heroic(1);
-                let aSLevelTwo = rl.question("\nThe cop looks you up and down and says, stay safe and informs you that you may continue shopping. You begin to walk away, heading to the Video game store. You arrive.\nDO YOU:\n(A) Buy a video game\n(B) Play on the sample console\n(C) Leave the mall\n\t");
+                
+                let aSLevelTwo = rl.question("\nThe cop looks you up and down and says, stay safe and informs you that you may continue shopping. You begin to walk away, heading to the Video game store. You arrive.\nDO YOU:\n(A) Buy a video game\n(B) Play on the sample console\n(C) Leave the mall\n\t", {limit: ['a','b','c']});
 
                 if (aSLevelTwo == "a" || aSLevelTwo == "b") {
                     currentLevel++;
                     heroic(2);
-                    let aSLevelThree = rl.question("\nWRONG!! THE COP NEVER SAID YOU COULD LEAVE! HE shows up behind you and pulls a gun and tells you to turn around\nDO YOU:\n(A) Gear up and fight\n(B) Gear Up and fly away\n(C) Put your hands up\n\t");
+                    
+                    let aSLevelThree = rl.question("\nWRONG!! THE COP NEVER SAID YOU COULD LEAVE! HE shows up behind you and pulls a gun and tells you to turn around\nDO YOU:\n(A) Gear up and fight\n(B) Gear Up and fly away\n(C) Put your hands up\n\t", {limit: ['a','b','c']});
                     if (aSLevelThree == "a") {
                         currentLevel++;
                         heroic(3);
@@ -160,9 +163,8 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
             }
 
             else {
-                //this is for answering and leaving quickly
-                //make aSLevelOne == b
-                let aSLevelTwo = rl.question("\nThe cop grows 6ft, then 7ft, then 10ft and it becomes apparent to you that he is an evil shapeshifter.\nDO YOU:\n(A) Gear up and fight\n(B) Run for your life\n\t");
+                
+                let aSLevelTwo = rl.question("\nThe cop grows 6ft, then 7ft, then 10ft and it becomes apparent to you that he is an evil shapeshifter.\nDO YOU:\n(A) Gear up and fight\n(B) Run for your life\n\t", {limit: ['a','b']});
                 if (aSLevelTwo == "a")
                 {
                     currentLevel++;
@@ -182,12 +184,14 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
         else if(playerChoice == "b" && initChoice == 'attend')
         {
             console.log("Gear stayed in school"); 
-            let bALevelOne = rl.question("\nYou are sitting in half taking notes, half doodling about the problematics of time travel, Virgil, your best friend is sitting by you paying attention, Bey and Grace are chatting about the upcoming Chemistry homework and in typical fashion there is an empty seat in front of you were Monet \"No Sho Mo\" Simpson usually isn't. All of a sudden, Mitch, the rich kid who always has the best tech, laptop malfunctions. No one hears or notices it but you. His screen goes all black, then all blue...then all red. It hits you, his computer has been compromised by the Brainiac virus and if you don't act fast it'll infect everyone else's electronics.\nDO YOU:\n(A) Tell him you know what's wrong and offer to fix it\n(B) Tell him to take it to the School IT Office\n\t");
+            
+            let bALevelOne = rl.question("\nYou are sitting in half taking notes, half doodling about the problematics of time travel, Virgil, your best friend is sitting by you paying attention, Bey and Grace are chatting about the upcoming Chemistry homework and in typical fashion there is an empty seat in front of you were Monet \"No Sho Mo\" Simpson usually isn't. All of a sudden, Mitch, the rich kid who always has the best tech, laptop malfunctions. No one hears or notices it but you. His screen goes all black, then all blue...then all red. It hits you, his computer has been compromised by the Brainiac virus and if you don't act fast it'll infect everyone else's electronics.\nDO YOU:\n(A) Tell him you know what's wrong and offer to fix it\n(B) Tell him to take it to the School IT Office\n\t", {limit: ['a','b']});
             if (bALevelOne == "a")
             {   
                 currentLevel++;
                 heroic(1);
-                let bALevelTwo = rl.question("\nMitch ignores you and calls you a loser, but the virus keeps spreading.\nDo You:\n(A) Ignore him and tell him his laptop is transmitting a signal that could destroy the class\n(B) Grab his laptop and try to hack Brainiac\n(C) Shrug and continue paying attention to the teacher\n\t");
+                
+                let bALevelTwo = rl.question("\nMitch ignores you and calls you a loser, but the virus keeps spreading.\nDo You:\n(A) Ignore him and tell him his laptop is transmitting a signal that could destroy the class\n(B) Grab his laptop and try to hack Brainiac\n(C) Shrug and continue paying attention to the teacher\n\t", {limit: ['a','b','c']});
                 if (bALevelTwo == "a") {
                     currentLevel++;
                     heroic(2);
@@ -201,7 +205,8 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                 else {
                     currentLevel++;
                     neut(2);
-                    let bALevelThree = rl.question("\nMitch's laptop screen goes green, his eyes change, he closes the laptop and you realize that Brainiac has used the computer webcam to involuntarily place Mitch in an AR that causes him to become violent.\nDo You:\n(A) Fight Mitch, being careful to only immobilize him so that you can later figure out how Brainiac's virus worked\n(B)Hurt Mitch because it is the only way\n\t")
+                    
+                    let bALevelThree = rl.question("\nMitch's laptop screen goes green, his eyes change, he closes the laptop and you realize that Brainiac has used the computer webcam to involuntarily place Mitch in an AR that causes him to become violent.\nDo You:\n(A) Fight Mitch, being careful to only immobilize him so that you can later figure out how Brainiac's virus worked\n(B)Hurt Mitch because it is the only way\n\t", {limit: ['a','b']})
                     if (bALevelThree == "a") {
                         currentLevel++;
                         heroic(3);
@@ -221,7 +226,8 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
             {   
                 currentLevel++;
                 cow(1);
-                let bALevelTwo = rl.question("\nMitch, raises his hand, and the teacher tells him to wait until the next break, which is in 20min. The virus slowly spreads to the school network, and begins infecting every device connected to it. Virgil, with his innate though not as developed bio-electronic wave detecter (a form of spider-sense) realizes there is a problem and tells you what he thinks. You fill him in.\nDO you\n(A) Immediately cause a diversion and gear up to take on Brainiac together\n(B) Tell Virgil to contact Batman and alert the Justice League\n(C) Relax, knowing the virus blocker you wrote is strong enough to protect you and Virgil's device\n\t");
+                
+                let bALevelTwo = rl.question("\nMitch, raises his hand, and the teacher tells him to wait until the next break, which is in 20min. The virus slowly spreads to the school network, and begins infecting every device connected to it. Virgil, with his innate though not as developed bio-electronic wave detecter (a form of spider-sense) realizes there is a problem and tells you what he thinks. You fill him in.\nDO you\n(A) Immediately cause a diversion and gear up to take on Brainiac together\n(B) Tell Virgil to contact Batman and alert the Justice League\n(C) Relax, knowing the virus blocker you wrote is strong enough to protect you and Virgil's device\n\t", {limit: ['a','b','c']});
                
                 if (bALevelTwo == "a" )
                 {
@@ -248,32 +254,32 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
         else if(playerChoice == "b" && initChoice == 'skip')
         {
             
-            let bSLevelOne = rl.question("\nYou are walking along, Virgil has decided not to come along this time, but you are okay, (you all can ditch together another day). You are walking along the sidewalk, backpack on, listening to music and an advertisement catches your eye. You brush it aside. Then another advertisement, different and yet familiar catches your eye. It hits you, that's not an advertisement, that's a person who's been following you.\nDo You\n(A) Turn around and investigate\n(B) Run\n\t")
+            let bSLevelOne = rl.question("\nYou are walking along, Virgil has decided not to come along this time, but you are okay, (you all can ditch together another day). You are walking along the sidewalk, backpack on, listening to music and an advertisement catches your eye. You brush it aside. Then another advertisement, different and yet familiar catches your eye. It hits you, that's not an advertisement, that's a person who's been following you.\nDo You\n(A) Turn around and investigate\n(B) Run\n\t", {limit: ['a','b']})
             if (bSLevelOne == "a") 
             {
                 currentLevel++;
                 heroic(1);
-                
-                let bSLevelTwo = rl.question("\nIt's Permafrost, the young houseless woman turned temperature decrecreasing villian who just last week nearly froze the city to death. She promises, she doesn't want to harm you, just help\nDo You\n(A) Believe Her\n(B) Disbelieve\n\t")
+               
+                let bSLevelTwo = rl.question("\nIt's Permafrost, the young houseless woman turned temperature decrecreasing villian who just last week nearly froze the city to death. She promises, she doesn't want to harm you, just help\nDo You\n(A) Believe Her\n(B) Disbelieve\n\t", {limit: ['a','b']})
                 if (bSLevelTwo == "a")
                 {
                     currentLevel++;
                     heroic(2);
-                    
-                    let bSLevelThree = rl.question("\nShe tells you that the last week she was under mind control and this week the gang is after her. You argue about last week's events and you the gang of meta-humans shows up to fight you.\nDo you\n(A) Fight\n(B) Run\n\t")
+                   
+                    let bSLevelThree = rl.question("\nShe tells you that the last week she was under mind control and this week the gang is after her. You argue about last week's events and you the gang of meta-humans shows up to fight you.\nDo you\n(A) Fight\n(B) Run\n\t",{limit: ['a','b']})
                    
                     if(bSLevelThree == "a") 
                     {
                         currentLevel++;
                         heroic(3);
-                        
-                        let bSLevelFour = rl.question("\nYou each tag team the fight, it is 2 against 5 and you are getting swamped. Static arrives and quickly starts fighting the gang and Permafrost. You tell him to stop but he doesn't understand.\nDo you\n(A) Fight him and the gang\n(B) Ignore him and continue fighting the gang\n\t")
+                      
+                        let bSLevelFour = rl.question("\nYou each tag team the fight, it is 2 against 5 and you are getting swamped. Static arrives and quickly starts fighting the gang and Permafrost. You tell him to stop but he doesn't understand.\nDo you\n(A) Fight him and the gang\n(B) Ignore him and continue fighting the gang\n\t", {limit: ['a','b']})
                             if(bSLevelFour == "a") 
                             { 
                                 currentLevel++;
                                 heroic(4);
                                 
-                                let bSLevelFive = rl.question("\nUsing your equipment you immobilize Static, the gang splits off and takes advantage of their major adversary being down for a sec. Static is hurt but Permafrost saves him. The gang is defeated and you and Static attempt to understand Permafrost's mind control issue. In the middle of the call you get a call, only its not on either you or Static's devices. Static taps into the air waves and realizes. it's BATMAN. He tells them there is a situation in Gotham and they are required, then hangs up.\nDO You\n(A) Continue listening to Permafrost\n(B) Leave and go to Gotham\n\t");
+                                let bSLevelFive = rl.question("\nUsing your equipment you immobilize Static, the gang splits off and takes advantage of their major adversary being down for a sec. Static is hurt but Permafrost saves him. The gang is defeated and you and Static attempt to understand Permafrost's mind control issue. In the middle of the call you get a call, only its not on either you or Static's devices. Static taps into the air waves and realizes. it's BATMAN. He tells them there is a situation in Gotham and they are required, then hangs up.\nDO You\n(A) Continue listening to Permafrost\n(B) Leave and go to Gotham\n\t", {limit: ['a','b']});
                                 if(bSLevelFive == "a")
                                 {
                                     currentLevel++;
@@ -286,14 +292,14 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                                     currentLevel++;
                                     cow(5)
                                     
-                                    //leave and go to Gotham
-                                    let bSLevelSix = rl.question("\nYou arrive and learn the joker has teamed up with Prof. Hugo Strange and they are attempting to gain mind control on all meta-humans,starting in you and Virgil's hometown. Would you like to return to your city or stay in Gotham\nDo You:\n(A) Leave and head back to your city\n(B) Stay in Gotham\n\t");
+                                    let bSLevelSix = rl.question("\nYou arrive and learn the joker has teamed up with Prof. Hugo Strange and they are attempting to gain mind control on all meta-humans,starting in you and Virgil's hometown. Would you like to return to your city or stay in Gotham\nDo You:\n(A) Leave and head back to your city\n(B) Stay in Gotham\n\t", {limit: ['a','b']});
 
                                     if(bSLevelSix == "a") {
                                         currentLevel++;
                                         
                                         heroic(6);
-                                        let bSLevelSeven = rl.question("\nYou arrive back and Permafrost is under mind control and is doing more damage than ever to the city.\nDo you\n(A)Fight\n(B) Run\n\t");
+                                       
+                                        let bSLevelSeven = rl.question("\nYou arrive back and Permafrost is under mind control and is doing more damage than ever to the city.\nDo you\n(A)Fight\n(B) Run\n\t", {limit: ['a','b']});
                                         if (bSLevelSeven == "a")
                                         { 
                                             currentLevel++;
@@ -335,8 +341,8 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                         //choosing to run
                         currentLevel++;
                         cow(3);
-                        
-                        let bSLevelThree = rl.question("\nYou get to an alley. you are safe. she explains her predicament. You understand, she was under mind control. You dodge the gang and you both use the sewers to head back to the hideout spot and locate the source of her mind control. The villian ink shows up out of no where.\nDo You:\n(A) Fight\n(B) Run\n\t");
+                       
+                        let bSLevelThree = rl.question("\nYou get to an alley. you are safe. she explains her predicament. You understand, she was under mind control. You dodge the gang and you both use the sewers to head back to the hideout spot and locate the source of her mind control. The villian ink shows up out of no where.\nDo You:\n(A) Fight\n(B) Run\n\t", {limit: ['a','b']});
                         if (bSLevelThree == "a")
                         {
                             currentLevel++;
@@ -360,7 +366,7 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                     currentLevel++;
                     cow(2);
                     
-                    let bSLevelThree = rl.question("\nShe asks you to follow her, you oblige, and just as you are in a private area, she freezes your feet to the ground\nDo You:\n(A) Ask her to unfreeze you and explain\n(B) Secretly alert Static\n\t")
+                    let bSLevelThree = rl.question("\nShe asks you to follow her, you oblige, and just as you are in a private area, she freezes your feet to the ground\nDo You:\n(A) Ask her to unfreeze you and explain\n(B) Secretly alert Static\n\t", {limit: ['a','b']})
                     if (bSLevelThree == "a") 
                     {
                         currentLevel++;
@@ -384,7 +390,7 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
                 currentLevel++
                 cow(1);
                 
-                let bSLevelTwo = rl.question("\nPermafrost, the person, following you begins running after you, then she freezes the ground. you slip and fall but she does not attempt to hurt you.\nDo you\n(A) Talk to her\n(B) Keep Running\n(C) You fight Permafrost\n\t")
+                let bSLevelTwo = rl.question("\nPermafrost, the person, following you begins running after you, then she freezes the ground. you slip and fall but she does not attempt to hurt you.\nDo you\n(A) Talk to her\n(B) Keep Running\n(C) You fight Permafrost\n\t", {limit: ['a','b','c']})
                 if (bSLevelTwo == "a"){
                     currentLevel++;
                     heroic(2);
@@ -408,10 +414,10 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
             }
 
         }
+
     }
 
     //********************************************************************************************************* */
-
 
     //this function takes the current level and the last action type and updates the points total 
     function heroic(levelNum)
@@ -425,16 +431,10 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
             return pts;
     }
 
-
     function neut(levelNum) {
         pts += (levelNum - 0.5);
         return pts;
-    }
-
-            
-
-
-
+    }       
 
 
     //function to calculate the max points possible
@@ -447,13 +447,11 @@ console.log("\n*******************\nThanks for Playing! Shock ya later!\n*******
             for(let j = i-1; j < i; j++)
             {
                 nearly += halfway;
-
             }
-            
         }
         return nearly;   
-        
   }
+
 
    //function calculates the percentage of heroic-ness
     function percentifyMe(max, pts) 
